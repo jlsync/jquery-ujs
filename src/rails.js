@@ -102,7 +102,7 @@ jQuery(function ($) {
      * disable_with handlers
      */
     $('form[data-remote="true"]').live('ajax:before', function () {
-        $(this).children('input[data-disable-with]').each(function () {
+        $(this).find('input[data-disable-with]').each(function () {
             var input = $(this);
             input.data('enable_with', input.val())
                  .attr('value', input.attr('data-disable-with'))
@@ -111,7 +111,7 @@ jQuery(function ($) {
     });
 
     $('form[data-remote="true"]').live('ajax:after', function () {
-        $(this).children('input[data-disable-with]').each(function () {
+        $(this).find('input[data-disable-with]').each(function () {
             var input = $(this);
             input.removeAttr('disabled')
                  .val(input.data('enable_with'));
