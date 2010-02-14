@@ -36,6 +36,7 @@ jQuery(function ($) {
                         data: data,
                         dataType: 'script',
                         type: method.toUpperCase(),
+                        contentType: "application/x-www-form-urlencoded",
                         beforeSend: function (xhr) {
                             el.trigger('ajax:loading', xhr);
                         },
