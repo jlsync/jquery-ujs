@@ -105,11 +105,8 @@ jQuery(function ($) {
     /**
      * disable-with handlers
      */
-    var disable_with_input_selector = 'input[data-disable-with]';
-    var disable_with_form_selector = 'form[data-remote]:has(' + disable_with_input_selector + ')';
-
-    $(disable_with_form_selector).live('ajax:before', function () {
-        $(this).find(disable_with_input_selector).each(function () {
+    $('form[data-remote]').live('ajax:before', function () {
+        $(this).find('input[data-disable-with]').each(function () {
             var input = $(this);
             input.data('enable-with', input.val())
                  .attr('value', input.attr('data-disable-with'))
@@ -117,8 +114,8 @@ jQuery(function ($) {
         });
     });
 
-    $(disable_with_form_selector).live('ajax:after', function () {
-        $(this).find(disable_with_input_selector).each(function () {
+    $('form[data-remote]').live('ajax:complete', function () {
+        $(this).find('input[data-disable-with]').each(function () {
             var input = $(this);
             input.removeAttr('disabled')
                  .val(input.data('enable-with'));
