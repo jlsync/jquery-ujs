@@ -114,7 +114,7 @@ jQuery(function ($) {
         });
     });
 
-    $('form[data-remote]').live('ajax:after', function () {
+    $('form[data-remote]').live('ajax:complete', function () {
         $(this).find('input[data-disable-with]').each(function () {
             var input = $(this);
             input.removeAttr('disabled')
